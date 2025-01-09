@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrtime</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+        #qrcodeCanvas {
+            width: 50vmin;
+            height: 50vmin;
+        }
+        .credits {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-family: Courier, monospace;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="qrcodeCanvas"></canvas>
+    <div class="credits">Created by Jason Park & Nimit Patel, 2025</div>
+
+    <script>
+        function updateQRCode() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true,
+                timeZoneName: 'short'
+            });
+
+            const canvas = document.getElementById('qrcodeCanvas');
+            const size = Math.min(window.innerWidth, window.innerHeight) * 0.65;
+
+            canvas.width = size;
+            canvas.height = size;
+
+            QRCode.toCanvas(canvas, timeString, {
+                width: size,
+                height: size,
+                errorCorrectionLevel: 'medium'
+            }, function (error) {
+                if (error) console.error(error);
+            });
+        }
+
+        setInterval(updateQRCode, 1000);
+        updateQRCode();
+    </script>
+</body>
+</html>
