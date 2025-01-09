@@ -24,7 +24,7 @@
             bottom: 10px;
             right: 10px;
             font-family: Courier, monospace;
-            font-size: 0.6rem; /* Smaller font size for desktop */
+            font-size: 10px; /* Smaller font size for desktop */
             color: #555;
         }
 
@@ -35,7 +35,7 @@
         }
 
         /* Mobile-specific styles */
-        @media (max-width: 768px) {
+        @media (max-width: 500px) {
             body {
                 flex-direction: column;
                 justify-content: space-between;
@@ -43,12 +43,12 @@
             #qrcodeCanvas {
                 width: 80vmin;
                 height: 80vmin;
-                margin-top: 10vmin;
+                margin-top: 15vmin;
             }
             .credits {
                 position: static;
-                margin-bottom: 10vmin;
-                font-size: 1.5vw;
+                margin-bottom: 20vmin;
+                font-size: 2vw;
                 text-align: center;
             }
         }
